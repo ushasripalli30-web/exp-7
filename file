@@ -1,0 +1,55 @@
+import pandas as pd
+
+# a. Text Files
+with open("sample.txt", "w") as f:
+    f.write("Welcome to Data Science\n")
+    f.write("Python is easy to learn\n")
+    f.write("Pandas is used for data analysis")
+
+print("TEXT FILE")
+with open("sample.txt", "r") as f:
+    print(f.read())
+
+with open("sample.txt", "r") as f:
+    print(f.read(10))
+
+with open("sample.txt", "r") as f:
+    print(f.readline())
+
+with open("sample.txt", "r") as f:
+    print(f.readlines())
+
+
+# b. CSV Files
+data = {
+    "Name": ["Alice", "Bob", "Charlie"],
+    "Age": [25, 30, 35],
+    "City": ["New York", "London", "India"]
+}
+
+df = pd.DataFrame(data)
+df.to_csv("sample.csv", index=False)
+
+print("\nCSV FILE")
+df_csv = pd.read_csv("sample.csv")
+print(df_csv)
+
+
+# c. Excel Files
+df.to_excel("sample.xlsx", index=False)
+
+print("\nEXCEL FILE")
+df_excel = pd.read_excel("sample.xlsx")
+print(df_excel)
+
+xl = pd.ExcelFile("sample.xlsx")
+print("Sheet Names:")
+print(xl.sheet_names)
+
+
+# d. JSON Files
+df.to_json("sample.json", orient="records")
+
+print("\nJSON FILE")
+df_json = pd.read_json("sample.json")
+print(df_json)
